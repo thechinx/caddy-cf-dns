@@ -41,6 +41,6 @@ jobs:
             srstone/caddy-cf-dns:latest
             srstone/caddy-cf-dns:${{ github.run_number }}
 
-          cache-from: type=registry,ref=srstone/caddy-cf-dns:cache
-          cache-to: type=registry,ref=srstone/caddy-cf-dns:cache,mode=max
+#          cache-from: type=registry,ref=srstone/caddy-cf-dns:cache
+#          cache-to: type=registry,ref=srstone/caddy-cf-dns:cache,mode=max
 
