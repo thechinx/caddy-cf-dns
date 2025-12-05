@@ -39,7 +39,7 @@ jobs:
 
           # Tags
           tags: |
-            srstone/caddy-cf-dns:$(date +%Y%m%d)
+            srstone/caddy-cf-dns:${{ env.DATE_TAG }}
             srstone/caddy-cf-dns:latest
 
 #          cache-from: type=registry,ref=your-dockerhub-username/your-image:cache
