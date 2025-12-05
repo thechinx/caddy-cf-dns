@@ -37,11 +37,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
 
-          # Tags
           tags: |
-            srstone/caddy-cf-dns:$(date +%Y%m%d)
             srstone/caddy-cf-dns:latest
+            srstone/caddy-cf-dns:${{ github.run_number }}
 
-#          cache-from: type=registry,ref=your-dockerhub-username/your-image:cache
-#          cache-to: type=registry,ref=your-dockerhub-username/your-image:cache,mode=max
+          cache-from: type=registry,ref=srstone/caddy-cf-dns:cache
+          cache-to: type=registry,ref=srstone/caddy-cf-dns:cache,mode=max
 
