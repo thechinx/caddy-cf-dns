@@ -45,8 +45,8 @@ jobs:
 
           # Tags: latest + date
           tags: |
-            srstone/caddy-cf-dns:latest
             srstone/caddy-cf-dns:${{ env.DATE_TAG }}
+            srstone/caddy-cf-dns:latest
 
           # Enable cache for faster future builds
 #          cache-from: type=registry,ref=your-dockerhub-username/your-image:cache
