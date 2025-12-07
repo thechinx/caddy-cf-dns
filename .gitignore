@@ -1,0 +1,8 @@
+Dockerfile.bak
+*.bak
+*.bakx
+*.old
+.github/workflows/*.bak
+.github/workflows/*.bakx
+.github/workflows/*.old
+

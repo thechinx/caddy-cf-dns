@@ -1,6 +1,3 @@
-# Dockerfile
-# SrstOne
-
 FROM caddy:builder AS builder
 
 RUN xcaddy build \
@@ -11,6 +8,10 @@ RUN xcaddy build \
     --with github.com/porech/caddy-maxmind-geolocation 
 
 FROM caddy:latest
+
+LABEL org.opencontainers.image.source="https://github.com/thechinx/caddy-cf-dns"
+LABEL org.opencontainers.image.description="Custom Caddy with Cloudflare + DynamicDNS + Admin UI + CF IP + MaxMind"
+LABEL org.opencontainers.image.version="${CADDY_VERSION}"
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 COPY Caddyfile /etc/caddy/Caddyfile
