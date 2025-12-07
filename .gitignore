@@ -1,4 +1,5 @@
 Dockerfile.bak
+gitupdate.sh
 *.bak
 *.bakx
 *.old
