@@ -5,13 +5,16 @@ on:
     - cron: "0 0 * * *"   # Daily at midnight UTC
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # -------------------------------
       # 🔍 CHECK FOR UPDATES
@@ -41,7 +44,7 @@ jobs:
       # -------------------------------
       - name: Restore Version Cache
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: build_versions.env
           key: caddy-cf-build-versions
@@ -76,15 +79,15 @@ jobs:
       # -------------------------------
       - name: Set up QEMU
         if: env.BUILD_NEEDED == 'true'
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
         if: env.BUILD_NEEDED == 'true'
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Log in to Docker Hub
         if: env.BUILD_NEEDED == 'true'
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -98,7 +101,7 @@ jobs:
       # -------------------------------
       - name: Build and Push Image
         if: env.BUILD_NEEDED == 'true'
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
